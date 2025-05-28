@@ -29,7 +29,7 @@ const { date, excerpt, link, tags, title } = Astro.props;
   </div>
 
   <div class="mt-4 flex justify-between items-center">
-    <div>
+    <div class="flex items-center justify-start gap-2">
       {tags.map(t => <Tag content={t} />)}
     </div>
 
@@ -41,4 +41,7 @@ const { date, excerpt, link, tags, title } = Astro.props;
       <span class="font-medium text-sm sm:text-base"> Read more </span></a
     >
   </div>
+
+  <!-- TODO: Should be hidden on the last post. -->
+  <hr class="mt-4 opacity-10 text-paragraph" />
 </div>

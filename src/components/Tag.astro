@@ -8,15 +8,7 @@ const { content } = Astro.props;
 
 <!-- TODO: make it a link later. -->
 <div
-  class="px-2
-  bg-highlight
-  bg-opacity-25
-  text-highlight
-  font-rubik
-  font-medium
-  text-xs
-  sm:text-sm
-  rounded"
+  class="px-2 bg-highlight/25 text-highlight font-rubik font-medium text-xs sm:text-sm rounded capitalize"
 >
-  {content}
+  <a href="#">{content}</a>
 </div>

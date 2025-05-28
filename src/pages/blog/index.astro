@@ -26,7 +26,7 @@ const posts = (await getCollection('blog')).sort(
                 date={post.data.pubDate}
                 excerpt={post.data.description}
                 link={`/blog/${post.id}/`}
-                tags={[]}
+                tags={post.data.tags}
                 title={post.data.title}
               />
             ))
