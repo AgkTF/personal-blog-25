@@ -1,0 +1,14 @@
+---
+type Props = {
+  title: string;
+  link: string;
+};
+
+const { title, link } = Astro.props;
+---
+
+<h2
+  class="font-bold font-sansita text-headline text-lg sm:text-xl lg:text-2xl hover:text-link"
+>
+  <a href={link}>{title}</a>
+</h2>

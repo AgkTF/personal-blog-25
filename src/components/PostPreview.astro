@@ -1,0 +1,44 @@
+---
+import FormattedDate from './FormattedDate.astro';
+import PostTitleLink from './PostTitleLink.astro';
+import Tag from './Tag.astro';
+
+type Props = {
+  date: Date;
+  excerpt: string;
+  link: string;
+  tags: string[];
+  title: string;
+};
+
+const { date, excerpt, link, tags, title } = Astro.props;
+---
+
+<div class="flex flex-col">
+  <div class="mt-2">
+    <div class="flex justify-between items-center gap-5">
+      <PostTitleLink title={title} link={link} />
+      <p class="text-xs text-paragraph font-rubik sm:text-sm">
+        <FormattedDate date={date} />
+      </p>
+    </div>
+
+    <p class="mt-2 font-rubik text-paragraph text-sm sm:text-base line-clamp-3">
+      {excerpt}
+    </p>
+  </div>
+
+  <div class="mt-4 flex justify-between items-center">
+    <div>
+      {tags.map(t => <Tag content={t} />)}
+    </div>
+
+    <a
+      href={link}
+      class="mt-2 flex items-center font-rubik text-tertiary hover:text-highlight self-end"
+    >
+      <!-- TODO: Add the arrow -->
+      <span class="font-medium text-sm sm:text-base"> Read more </span></a
+    >
+  </div>
+</div>
