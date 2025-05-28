@@ -1,0 +1,22 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import NavBar from '../components/NavBar.astro';
+
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
+
+  <body class="bg-background min-h-screen">
+    <header
+      class="sticky top-0 z-10 bg-navBg-light dark:bg-navBg-dark backdrop-blur"
+    >
+      <NavBar />
+    </header>
+
+    <slot />
+  </body>
+</html>

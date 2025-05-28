@@ -107,4 +107,5 @@ html.dark {
   --font-rubik: 'Rubik', sans-serif;
   --font-racing: 'Racing', sans-serif;
   --font-atkinson: 'Atkinson', serif;
+  --breakpoint-xs: 414px;
 }
