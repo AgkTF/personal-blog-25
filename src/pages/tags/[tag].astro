@@ -1,0 +1,58 @@
+---
+import PostPreview from '../../components/PostPreview.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  const tags = new Set(posts.flatMap(post => post.data.tags || []));
+
+  return Array.from(tags).map(tag => {
+    const filteredPosts = posts.filter(post => post.data.tags?.includes(tag));
+
+    return {
+      params: { tag },
+      props: { posts: filteredPosts },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<BaseLayout
+  title={`Posts tagged with "${tag}"`}
+  description={`A list of posts tagged with "${tag}"`}
+>
+  <main
+    class="pb-16 mt-5 max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl m-auto"
+  >
+    <section class="mt-6 sm:mt-10 w-full">
+      <h1
+        class="font-bold font-sansita text-headline text-2xl sm:text-3xl capitalize"
+      >
+        {tag} Posts
+      </h1>
+
+      <div class="mt-6 space-y-4">
+        {
+          posts.length > 0 ? (
+            posts.map(post => (
+              <PostPreview
+                date={post.data.pubDate}
+                excerpt={post.data.description}
+                link={`/blog/${post.id}/`}
+                tags={post.data.tags}
+                title={post.data.title}
+              />
+            ))
+          ) : (
+            <p>No posts found for this tag.</p>
+          )
+        }
+      </div>
+    </section>
+  </main>
+</BaseLayout>

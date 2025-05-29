@@ -6,9 +6,8 @@ type Props = {
 const { content } = Astro.props;
 ---
 
-<!-- TODO: make it a link later. -->
 <div
   class="px-2 bg-highlight/25 text-highlight font-rubik font-medium text-xs sm:text-sm rounded capitalize"
 >
-  <a href="#">{content}</a>
+  <a href={`/tags/${content.trim().toLowerCase()}/`}>{content}</a>
 </div>
