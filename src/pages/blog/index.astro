@@ -3,36 +3,62 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostPreview from '../../components/PostPreview.astro';
+import FeaturedPost from '../../components/FeaturedPost.astro';
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
+const featuredPosts = (await getCollection('blog'))
+  .filter(p => p.data.featuredRank)
+  .sort((a, b) => Number(a.data.featuredRank) - Number(b.data.featuredRank));
+
+const latestPosts = (await getCollection('blog'))
+  .filter(p => !p.data.featuredRank)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main
     class="max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl flex flex-col justify-center mx-5 xs:mx-auto"
   >
-    <section>
-      <section class="mt-8 sm:mt-12 w-full">
-        <h1 class="font-bold font-sansita text-headline text-2xl sm:text-3xl">
-          Latest
-        </h1>
+    {
+      featuredPosts.length > 0 ? (
+        <section class="mt-6 sm:mt-10 w-full">
+          <h1 class="font-bold font-sansita text-2xl sm:text-3xl text-headline">
+            Featured
+          </h1>
 
-        <div class="mt-6 space-y-4">
-          {
-            posts.map(post => (
-              <PostPreview
+          <div class="mt-6 sm:mt-10 gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2">
+            {featuredPosts.map(post => (
+              <FeaturedPost
                 date={post.data.pubDate}
-                excerpt={post.data.description}
+                featuredRank={post.data.featuredRank!}
+                heroImage={post.data.heroImage!}
                 link={`/blog/${post.id}/`}
                 tags={post.data.tags}
                 title={post.data.title}
               />
-            ))
-          }
-        </div>
-      </section>
+            ))}
+          </div>
+        </section>
+      ) : null
+    }
+
+    <section class="mt-8 sm:mt-12 w-full">
+      <h1 class="font-bold font-sansita text-headline text-2xl sm:text-3xl">
+        Latest
+      </h1>
+
+      <div class="mt-6 space-y-4">
+        {
+          latestPosts.map(post => (
+            <PostPreview
+              date={post.data.pubDate}
+              excerpt={post.data.description}
+              link={`/blog/${post.id}/`}
+              tags={post.data.tags}
+              title={post.data.title}
+            />
+          ))
+        }
+      </div>
     </section>
   </main>
 </BaseLayout>
