@@ -26,16 +26,16 @@ const latestPosts = (await getCollection('blog'))
           </h1>
 
           <div class="mt-6 sm:mt-10 gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2">
-            {/* <FeaturedPost
+            <FeaturedPost
               date={featuredPosts[0].data.pubDate}
               featuredRank={featuredPosts[0].data.featuredRank!}
               heroImage={featuredPosts[0].data.heroImage!}
               link={`/blog/${featuredPosts[0].id}/`}
               tags={featuredPosts[0].data.tags}
               title={featuredPosts[0].data.title}
-              containerClasses="bg-card-bg rounded-xl shadow-lg overflow-hidden flex flex-col sm:flex-row min-w-[280px] md:col-span-2"
-              imgContainerClasses="relative overflow-hidden aspect-[5/3] min-h-64 shrink-0 sm:w-80 md:w-96"
-            /> */}
+              containerClasses="bg-card-bg rounded-xl shadow-lg overflow-hidden flex flex-col sm:flex-row min-w-2xs md:col-span-2"
+              imgContainerClasses="relative overflow-hidden min-h-64 lg:min-h-80 w-full md:w-3/5 md:shrink-0"
+            />
 
             {featuredPosts.slice(1).map(post => (
               <FeaturedPost
