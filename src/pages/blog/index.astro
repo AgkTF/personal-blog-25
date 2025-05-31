@@ -3,46 +3,23 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostPreview from '../../components/PostPreview.astro';
-import FeaturedPost from '../../components/FeaturedPost.astro';
+import Tag from '../../components/Tag.astro';
 
-const featuredPosts = (await getCollection('blog'))
-  .filter(p => p.data.featuredRank)
-  .sort((a, b) => Number(a.data.featuredRank) - Number(b.data.featuredRank));
+const postsCollection = await getCollection('blog');
 
-const latestPosts = (await getCollection('blog'))
+const tags = new Set(postsCollection.flatMap(post => post.data.tags || []));
+
+const latestPosts = postsCollection
   .filter(p => !p.data.featuredRank)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
 <BaseLayout title={SITE_TITLE} description={SITE_DESCRIPTION}>
   <main
-    class="max-w-sm sm:max-w-xl md:max-w-2xl lg:max-w-3xl flex flex-col justify-center mx-5 xs:mx-auto"
+    class="grid md:grid-cols-[2fr_1fr] gap-20 max-w-sm mx-5 sm:max-w-xl md:max-w-2xl lg:max-w-4xl xs:mx-auto"
   >
-    {
-      featuredPosts.length > 0 ? (
-        <section class="mt-6 sm:mt-10 w-full">
-          <h1 class="font-bold font-sansita text-2xl sm:text-3xl text-headline">
-            Featured
-          </h1>
-
-          <div class="mt-6 sm:mt-10 gap-6 lg:gap-8 grid grid-cols-1 md:grid-cols-2">
-            {featuredPosts.map(post => (
-              <FeaturedPost
-                date={post.data.pubDate}
-                featuredRank={post.data.featuredRank!}
-                heroImage={post.data.heroImage!}
-                link={`/blog/${post.id}/`}
-                tags={post.data.tags}
-                title={post.data.title}
-              />
-            ))}
-          </div>
-        </section>
-      ) : null
-    }
-
-    <section class="mt-8 sm:mt-12 w-full">
-      <h1 class="font-bold font-sansita text-headline text-2xl sm:text-3xl">
+    <section class="w-full mt-8 sm:mt-12">
+      <h1 class="text-2xl font-bold font-sansita text-headline sm:text-3xl">
         Latest
       </h1>
 
@@ -57,6 +34,20 @@ const latestPosts = (await getCollection('blog'))
               title={post.data.title}
             />
           ))
+        }
+      </div>
+    </section>
+
+    <section class="w-full md:mt-12">
+      <h1 class="text-2xl font-bold font-sansita text-headline sm:text-3xl">
+        Tags
+      </h1>
+
+      <div class="flex flex-wrap gap-2 mt-6 sm:gap-3">
+        {
+          Array.from(tags)
+            .sort()
+            .map(tag => <Tag content={tag} />)
         }
       </div>
     </section>

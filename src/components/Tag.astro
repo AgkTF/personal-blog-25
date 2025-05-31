@@ -7,7 +7,7 @@ const { content } = Astro.props;
 ---
 
 <div
-  class="px-2 bg-highlight/25 text-highlight font-rubik font-medium text-xs sm:text-sm rounded capitalize whitespace-nowrap"
+  class="px-1 text-xs font-medium capitalize rounded sm:px-2 sm:py-1 sm:rounded-md bg-highlight/25 text-highlight font-rubik sm:text-sm whitespace-nowrap"
 >
   <a href={`/tags/${content.trim().toLowerCase()}/`}>{content}</a>
 </div>
