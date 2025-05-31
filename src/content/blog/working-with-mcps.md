@@ -2,7 +2,6 @@
 title: 'Working with MCPs (Model Context Protocol)'
 pubDate: '2025-03-15'
 description: 'An introduction to working with Model Context Protocols (MCPs) and their applications in modern software development.'
-# tags: ['MCP', 'protocols']
 tags: ['MCP', 'protocols', 'software development', 'models']
 featuredRank: 3
 heroImage: '/blog-placeholder-3.jpg'

@@ -10,18 +10,24 @@ type Props = {
   link: string;
   tags: string[];
   title: string;
+  containerClasses: string;
+  imgContainerClasses: string;
 };
 
-const { date, link, tags, title, heroImage, featuredRank } = Astro.props;
+const {
+  date,
+  link,
+  tags,
+  title,
+  heroImage,
+  featuredRank,
+  containerClasses,
+  imgContainerClasses,
+} = Astro.props;
 ---
 
-<div
-  class="bg-card-bg rounded-xl shadow-lg overflow-hidden flex flex-col sm:flex-row md:flex-col min-w-[280px] lg:w-96"
->
-  <a
-    href={link}
-    class="relative overflow-hidden aspect-[5/3] sm:aspect-auto min-h-64 shrink-0 sm:w-80 md:w-full"
-  >
+<div class={containerClasses}>
+  <a href={link} class={imgContainerClasses}>
     <img
       src={heroImage}
       alt={title}
@@ -30,9 +36,9 @@ const { date, link, tags, title, heroImage, featuredRank } = Astro.props;
   </a>
 
   <div
-    class="py-3 px-5 h-full w-full flex flex-col justify-between items-start"
+    class="py-3 px-5 sm:w-60 md:w-full md:h-full shrink-0 md:shrink flex flex-col justify-between items-start"
   >
-    <div class="sm:w-48 sm:max-w-sm md:w-72">
+    <div>
       <PostTitleLink title={title} link={link} />
     </div>
 
