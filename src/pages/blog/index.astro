@@ -5,11 +5,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import PostPreview from '../../components/PostPreview.astro';
 import FeaturedPost from '../../components/FeaturedPost.astro';
 
-const featuredPosts = (await getCollection('blog'))
+const postsCollection = await getCollection('blog');
+
+const featuredPosts = postsCollection
   .filter(p => p.data.featuredRank)
   .sort((a, b) => Number(a.data.featuredRank) - Number(b.data.featuredRank));
 
-const latestPosts = (await getCollection('blog'))
+const latestPosts = postsCollection
   .filter(p => !p.data.featuredRank)
   .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
@@ -34,7 +36,7 @@ const latestPosts = (await getCollection('blog'))
               tags={featuredPosts[0].data.tags}
               title={featuredPosts[0].data.title}
               containerClasses="bg-card-bg rounded-xl shadow-lg overflow-hidden flex flex-col sm:flex-row min-w-2xs md:col-span-2"
-              imgContainerClasses="relative overflow-hidden min-h-64 lg:min-h-80 w-full md:w-3/5 md:shrink-0"
+              imgContainerClasses="relative overflow-hidden min-h-64 lg:min-h-80 w-full md:w-2/3 md:shrink-0"
             />
 
             {featuredPosts.slice(1).map(post => (

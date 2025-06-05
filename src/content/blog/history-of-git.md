@@ -3,11 +3,15 @@ title: 'The History of Git'
 pubDate: '2025-01-15'
 description: 'Explore the fascinating history of Git, the distributed version control system that revolutionized software development.'
 tags: ['git', 'version control']
-# tags: ['git', 'version control', 'history', 'software development']
 heroImage: '/blog-placeholder-1.jpg'
 featuredRank: 2
 excerpt: 'Discover how Git emerged from the need for a robust version control system for the Linux kernel, and how it has transformed software development practices worldwide.'
 ---
+
+<figure>
+  <img src="/blog-placeholder-1.jpg" alt="The History of Git" />
+  <figcaption>The History of Git</figcaption>
+</figure>
 
 # The History of Git
 
