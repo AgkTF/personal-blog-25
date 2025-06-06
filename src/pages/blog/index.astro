@@ -57,21 +57,38 @@ const featuredPosts = postsCollection
         </div>
       </section>
 
-      <section class="mt-12">
-        <h1 class="text-2xl font-bold font-sansita text-headline sm:text-3xl">
-          Featured
-        </h1>
+      {
+        featuredPosts.length > 0 ? (
+          <section class="mt-12">
+            <h1 class="text-2xl font-bold font-sansita text-headline sm:text-3xl">
+              Featured
+            </h1>
 
-        <div class="mt-6 space-y-3">
-          {
-            featuredPosts.map(post => (
-              <h2 class="font-bold font-sansita text-headline text-lg hover:text-link">
-                <a href={`/blog/${post.id}/`}>{post.data.title}</a>
-              </h2>
-            ))
-          }
-        </div>
-      </section>
+            <div class="mt-6 space-y-3">
+              {featuredPosts.map(post => (
+                <div class="flex gap-2 text-headline hover:text-link">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    fill="currentColor"
+                    class="size-4 shrink-0 mt-2"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M2 8a.75.75 0 0 1 .75-.75h8.69L8.22 4.03a.75.75 0 0 1 1.06-1.06l4.5 4.5a.75.75 0 0 1 0 1.06l-4.5 4.5a.75.75 0 0 1-1.06-1.06l3.22-3.22H2.75A.75.75 0 0 1 2 8Z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+
+                  <h2 class="font-bold font-sansita  text-lg">
+                    <a href={`/blog/${post.id}/`}>{post.data.title}</a>
+                  </h2>
+                </div>
+              ))}
+            </div>
+          </section>
+        ) : null
+      }
     </aside>
   </main>
 </BaseLayout>
