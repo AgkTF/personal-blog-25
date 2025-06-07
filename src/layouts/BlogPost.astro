@@ -14,7 +14,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     class="max-w-sm pb-16 m-auto mt-5 sm:max-w-xl md:max-w-2xl lg:max-w-4xl"
   >
     <h1
-      class="text-2xl font-bold capitalize font-sansita text-headline sm:text-3xl"
+      class="text-2xl font-bold capitalize font-headline text-headline sm:text-3xl"
     >
       {title}
     </h1>
@@ -30,7 +30,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     <hr class="my-5 text-gray-200 dark:text-gray-700" />
 
     <article
-      class="prose font-rubik text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code max-w-none"
+      class="prose font-content text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code max-w-none"
     >
       <slot />
     </article>
@@ -40,7 +40,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
         <div>
           <hr class="my-5 text-gray-200 dark:text-gray-700" />
           <p class="pb-2 mt-2 text-xs sm:text-sm text-paragraph">
-            <span class="text-code font-rubik">Last Updated: </span>
+            <span class="text-code font-content">Last Updated: </span>
             <FormattedDate date={updatedDate} />
           </p>
         </div>
