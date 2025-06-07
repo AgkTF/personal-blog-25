@@ -13,22 +13,21 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
   <main
     class="max-w-sm pb-16 m-auto mt-5 sm:max-w-xl md:max-w-2xl lg:max-w-4xl"
   >
-    <div class="flex items-center justify-start gap-2">
-      {tags.map(tag => <Tag content={tag} />)}
-    </div>
-
-    <p class="mt-2 text-xs sm:text-sm text-paragraph">
-      <FormattedDate date={pubDate} />
-    </p>
-
     <h1
-      class="mt-5 text-2xl font-bold capitalize font-sansita text-headline sm:text-3xl"
+      class="text-2xl font-bold capitalize font-sansita text-headline sm:text-3xl"
     >
       {title}
     </h1>
 
-    <!-- TODO: add social sharing buttons -->
-    <hr class="my-5 text-gray-200" />
+    <p class="mt-4 text-xs sm:text-sm text-paragraph">
+      <FormattedDate date={pubDate} />
+    </p>
+
+    <div class="mt-4 flex items-center justify-start gap-2">
+      {tags.map(tag => <Tag content={tag} />)}
+    </div>
+
+    <hr class="my-5 text-gray-200 dark:text-gray-700" />
 
     <article
       class="prose font-rubik text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code max-w-none"
@@ -39,7 +38,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
     {
       updatedDate ? (
         <div>
-          <hr class="my-5 text-gray-200" />
+          <hr class="my-5 text-gray-200 dark:text-gray-700" />
           <p class="pb-2 mt-2 text-xs sm:text-sm text-paragraph">
             <span class="text-code font-rubik">Last Updated: </span>
             <FormattedDate date={updatedDate} />
