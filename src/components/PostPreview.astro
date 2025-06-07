@@ -23,7 +23,9 @@ const { date, excerpt, link, tags, title } = Astro.props;
       </p>
     </div>
 
-    <p class="mt-2 font-rubik text-paragraph text-sm sm:text-base line-clamp-3">
+    <p
+      class="mt-2 font-content text-paragraph text-sm sm:text-base line-clamp-3"
+    >
       {excerpt}
     </p>
   </div>
@@ -35,7 +37,7 @@ const { date, excerpt, link, tags, title } = Astro.props;
 
     <a
       href={link}
-      class="flex items-center font-rubik text-tertiary hover:text-highlight self-end"
+      class="flex items-center font-content text-tertiary hover:text-highlight self-end"
     >
       <span class="font-medium text-sm sm:text-base">Read more</span>
       <svg
