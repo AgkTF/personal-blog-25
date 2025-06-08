@@ -3,7 +3,6 @@ title: 'Building Modern Websites with Astro'
 description: 'A deep dive into why Astro is becoming the go-to framework for building fast, modern websites and how to get started with it.'
 pubDate: '2023-12-20'
 heroImage: '/blog-placeholder-2.jpg'
-# tags: ['astro']
 tags: ['web development', 'astro', 'javascript', 'performance']
 featuredRank: 1
 excerpt: 'Astro is revolutionizing web development with its performance-first approach. Learn how to build modern websites using Astro and why it’s the framework of choice for developers.'
