@@ -11,9 +11,14 @@ const { headings } = Astro.props;
 const toc = generateToc(headings);
 ---
 
-<div class="sticky top-1">
-  <h2 class="text-xl font-bold">Table of Contents</h2>
-  <ul class="list-disc pl-5 text-sm font-content">
+<div
+  class="sticky top-48 border border-slate-400 px-3 pb-2 rounded-xl max-h-[600px] overflow-y-auto text-paragraph"
+>
+  <h2 class="text-xl font-bold sticky top-0 bg-background px-1 pt-2">
+    Table of Contents
+  </h2>
+
+  <ul class="mt-2 list-none">
     {toc.map(item => <TocHeading heading={item} />)}
   </ul>
 </div>

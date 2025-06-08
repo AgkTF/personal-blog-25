@@ -10,12 +10,16 @@ const {
 } = Astro.props;
 ---
 
-<li>
-  <a href={`#${slug}`} class="pl-1 before:content-['#']">{text}</a>
+<li class="font-medium mt-1">
+  <a
+    href={`#${slug}`}
+    class="text-sm hover:text-link before:content-['#'] before:mr-1 before:text-link"
+    >{text}</a
+  >
 
   {
     children.length > 0 ? (
-      <ul class="ms-2">
+      <ul class="ml-3">
         {children.map(heading => (
           <Astro.self heading={heading} />
         ))}
