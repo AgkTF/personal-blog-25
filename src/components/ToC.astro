@@ -1,22 +1,19 @@
 ---
 import type { MarkdownHeading } from 'astro';
+import { generateToc } from '../utils/generateToC';
+import TocHeading from './TocHeading.astro';
 
 type Props = {
   headings: MarkdownHeading[];
 };
 
 const { headings } = Astro.props;
+const toc = generateToc(headings);
 ---
 
-<h2 class="text-xl font-bold">Table of Contents</h2>
-<ul class="list-disc pl-5">
-  {
-    headings.map(heading => (
-      <li>
-        <a href={`#${heading.slug}`} class="text-link">
-          {heading.text}
-        </a>
-      </li>
-    ))
-  }
-</ul>
+<div class="sticky top-1">
+  <h2 class="text-xl font-bold">Table of Contents</h2>
+  <ul class="list-disc pl-5 text-sm font-content">
+    {toc.map(item => <TocHeading heading={item} />)}
+  </ul>
+</div>

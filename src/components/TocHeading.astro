@@ -1,0 +1,25 @@
+---
+import type { TocItem } from '../utils/generateToC';
+
+type Props = {
+  heading: TocItem;
+};
+
+const {
+  heading: { children, depth, slug, text },
+} = Astro.props;
+---
+
+<li>
+  <a href={`#${slug}`} class="pl-1 before:content-['#']">{text}</a>
+
+  {
+    children.length > 0 ? (
+      <ul class="ms-2">
+        {children.map(heading => (
+          <Astro.self heading={heading} />
+        ))}
+      </ul>
+    ) : null
+  }
+</li>
