@@ -1,50 +1,69 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
-import BaseLayout from './BaseLayout.astro';
 import Tag from '../components/Tag.astro';
+import BaseHead from '../components/BaseHead.astro';
+import NavBar from '../components/NavBar.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, tags } = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
-  <main
-    class="max-w-sm pb-16 m-auto mt-5 sm:max-w-xl md:max-w-2xl lg:max-w-4xl"
-  >
-    <h1
-      class="text-2xl font-bold capitalize font-headline text-headline sm:text-3xl"
-    >
-      {title}
-    </h1>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <BaseHead title={title} description={description} />
+  </head>
 
-    <p class="mt-4 text-xs sm:text-sm text-paragraph">
-      <FormattedDate date={pubDate} />
-    </p>
+  <body class="bg-background min-h-screen">
+    <header class="bg-nav-bg backdrop-blur">
+      <NavBar />
+    </header>
 
-    <div class="mt-4 flex items-center justify-start gap-2">
-      {tags.map(tag => <Tag content={tag} />)}
-    </div>
+    <main class="max-w-sm pb-16 m-auto sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
+      <section class="pt-6 sticky top-0 z-10 bg-background">
+        <h1
+          class="text-2xl font-bold capitalize font-headline text-headline sm:text-3xl"
+        >
+          {title}
+        </h1>
 
-    <hr class="my-5 text-gray-200 dark:text-gray-700" />
+        <p class="mt-4 text-xs sm:text-sm text-paragraph">
+          <FormattedDate date={pubDate} />
+        </p>
 
-    <article
-      class="prose font-content text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code max-w-none"
-    >
-      <slot />
-    </article>
-
-    {
-      updatedDate ? (
-        <div>
-          <hr class="my-5 text-gray-200 dark:text-gray-700" />
-          <p class="pb-2 mt-2 text-xs sm:text-sm text-paragraph">
-            <span class="text-code font-content">Last Updated: </span>
-            <FormattedDate date={updatedDate} />
-          </p>
+        <div class="mt-4 flex items-center justify-start gap-2">
+          {tags.map(tag => <Tag content={tag} />)}
         </div>
-      ) : null
-    }
-  </main>
-</BaseLayout>
+
+        <hr class="my-5 text-gray-200 dark:text-gray-700" />
+      </section>
+
+      <div class="block lg:grid lg:grid-cols-[auto_1fr] gap-8 relative">
+        <div>
+          <article
+            class="prose font-content text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-headings:scroll-mt-44 prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code max-w-none lg:max-w-prose"
+          >
+            <slot name="content" />
+          </article>
+
+          {
+            updatedDate ? (
+              <div>
+                <hr class="my-5 text-gray-200 dark:text-gray-700" />
+                <p class="pb-2 mt-2 text-xs sm:text-sm text-paragraph">
+                  <span class="text-code font-content">Last Updated: </span>
+                  <FormattedDate date={updatedDate} />
+                </p>
+              </div>
+            ) : null
+          }
+        </div>
+
+        <aside class="hidden lg:block">
+          <slot name="toc" />
+        </aside>
+      </div>
+    </main>
+  </body>
+</html>
