@@ -39,10 +39,10 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
         <hr class="my-5 text-gray-200 dark:text-gray-700" />
       </section>
 
-      <div class="grid grid-cols-[auto_1fr] gap-8 relative">
+      <div class="block lg:grid lg:grid-cols-[auto_1fr] gap-8 relative">
         <div>
           <article
-            class="prose font-content text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-headings:scroll-mt-44 prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code"
+            class="prose font-content text-paragraph prose-code:text-code prose-a:text-link prose-blockquote:text-paragraph prose-strong:text-paragraph prose-em:text-reddish prose-em:font-semibold prose-headings:text-paragraph prose-headings:scroll-mt-44 prose-img:rounded prose-figure:text-paragraph prose-figure:text-center prose-figcaption:text-paragraph prose-figcaption:text-center prose-kbd:text-code max-w-none lg:max-w-prose"
           >
             <slot name="content" />
           </article>
@@ -60,7 +60,7 @@ const { title, description, pubDate, updatedDate, tags } = Astro.props;
           }
         </div>
 
-        <aside>
+        <aside class="hidden lg:block">
           <slot name="toc" />
         </aside>
       </div>
