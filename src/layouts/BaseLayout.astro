@@ -5,15 +5,13 @@ import NavBar from '../components/NavBar.astro';
 const { title, description } = Astro.props;
 ---
 
-<html lang="en">
+<html lang="en" class="scroll-smooth">
   <head>
     <BaseHead title={title} description={description} />
   </head>
 
   <body class="bg-background min-h-screen">
-    <header
-      class="sticky top-0 z-10 bg-navBg-light dark:bg-navBg-dark backdrop-blur"
-    >
+    <header class="sticky top-0 z-10 bg-nav-bg backdrop-blur">
       <NavBar />
     </header>
 

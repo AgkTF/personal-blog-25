@@ -1,0 +1,29 @@
+---
+import type { TocItem } from '../utils/generateToC';
+
+type Props = {
+  heading: TocItem;
+};
+
+const {
+  heading: { children, depth, slug, text },
+} = Astro.props;
+---
+
+<li class="font-medium mt-1">
+  <a
+    href={`#${slug}`}
+    class="text-sm hover:text-link before:content-['#'] before:mr-1 before:text-link"
+    >{text}</a
+  >
+
+  {
+    children.length > 0 ? (
+      <ul class="ml-3">
+        {children.map(heading => (
+          <Astro.self heading={heading} />
+        ))}
+      </ul>
+    ) : null
+  }
+</li>

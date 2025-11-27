@@ -3,45 +3,16 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @font-face {
-  font-family: 'Sansita';
-  src: url(/fonts/sansita/Sansita-Regular.ttf) format('truetype');
-  font-weight: 400;
+  font-family: 'Chivo';
+  src: url(/fonts/Chivo-VariableFont_wght.ttf) format('truetype');
+  font-weight: 100 900;
   font-display: swap;
 }
 @font-face {
-  font-family: 'Sansita';
-  src: url(/fonts/sansita/Sansita-Bold.ttf) format('truetype');
-  font-weight: 700;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Rubik';
-  src: url(/fonts/rubik/Rubik-Light.ttf) format('truetype');
-  font-weight: 300;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Rubik';
-  src: url(/fonts/rubik/Rubik-Regular.ttf) format('truetype');
-  font-weight: 400;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Rubik';
-  src: url(/fonts/rubik/Rubik-Medium.ttf) format('truetype');
-  font-weight: 500;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Rubik';
-  src: url(/fonts/rubik/Rubik-SemiBold.ttf) format('truetype');
-  font-weight: 600;
-  font-display: swap;
-}
-@font-face {
-  font-family: 'Rubik';
-  src: url(/fonts/rubik/Rubik-Bold.ttf) format('truetype');
-  font-weight: 700;
+  font-family: 'Nunito Sans';
+  src: url(/fonts/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf)
+    format('truetype');
+  font-weight: 100 900;
   font-display: swap;
 }
 @font-face {
@@ -64,7 +35,7 @@
 }
 
 :root {
-  --highlight-color: #3da9fc;
+  --highlight-color: #1f94ed;
   --reddish-color: #ef4565;
   --background-color: #f5f5f7;
   --paragraph-color: #5f6c7b;
@@ -72,9 +43,12 @@
   --code-color: #00939b;
   --headline-color: #094067;
   --card-bg-color: #fffffe;
-  --link-color: #3da9fc;
+  --link-color: #1f94ed;
   /* TODO: do not use alpha values here */
   --nav-bg-color: #f5f5f796;
+
+  --font-content: 'Nunito Sans', sans-serif;
+  --font-headline: 'Chivo', sans-serif;
 }
 
 html.dark {
@@ -102,11 +76,11 @@ html.dark {
   --color-card-bg: var(--card-bg-color);
   --color-link: var(--link-color);
   --color-nav-bg: var(--nav-bg-color);
+  --font-content: var(--font-content);
+  --font-headline: var(--font-headline);
 }
 
 @theme {
-  --font-sansita: 'Sansita', sans-serif;
-  --font-rubik: 'Rubik', sans-serif;
   --font-racing: 'Racing', sans-serif;
   --font-atkinson: 'Atkinson', serif;
   --breakpoint-xs: 414px;

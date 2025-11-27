@@ -18,31 +18,33 @@ const { date, excerpt, link, tags, title } = Astro.props;
   <div class="mt-2">
     <div class="flex justify-between items-center gap-5">
       <PostTitleLink title={title} link={link} />
-      <p class="text-xs text-paragraph sm:text-sm">
+      <p class="text-xs text-paragraph sm:text-sm shrink-0">
         <FormattedDate date={date} />
       </p>
     </div>
 
-    <p class="mt-2 font-rubik text-paragraph text-sm sm:text-base line-clamp-3">
+    <p
+      class="mt-2 font-content text-paragraph text-sm sm:text-base line-clamp-3"
+    >
       {excerpt}
     </p>
   </div>
 
-  <div class="mt-4 flex justify-between items-center">
+  <div class="mt-4 flex justify-between items-center flex-wrap gap-3">
     <div class="flex items-center justify-start gap-2">
       {tags.map(t => <Tag content={t} />)}
     </div>
 
     <a
       href={link}
-      class="flex items-center font-rubik text-tertiary hover:text-highlight self-end"
+      class="flex items-center font-content text-tertiary hover:text-highlight self-end"
     >
       <span class="font-medium text-sm sm:text-base">Read more</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 16 16"
         fill="currentColor"
-        class="ml-1 size-4"
+        class="ml-1 size-3.5 shrink-0"
       >
         <path
           fill-rule="evenodd"
@@ -53,5 +55,5 @@ const { date, excerpt, link, tags, title } = Astro.props;
   </div>
 
   <!-- TODO: Should be hidden on the last post. -->
-  <hr class="mt-4 opacity-10 text-paragraph" />
+  <hr class="mt-4 text-gray-200 dark:text-gray-700" />
 </div>

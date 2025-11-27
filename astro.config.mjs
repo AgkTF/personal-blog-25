@@ -1,14 +1,17 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
-// https://astro.build/config
+import netlify from '@astrojs/netlify';
+
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://agktf.com',
   integrations: [mdx(), sitemap()],
+
   vite: {
     plugins: [tailwindcss()],
   },
+
+  adapter: netlify(),
 });
