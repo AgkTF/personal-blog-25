@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://agktf.com',
   integrations: [mdx(), sitemap()],
 
   vite: {
